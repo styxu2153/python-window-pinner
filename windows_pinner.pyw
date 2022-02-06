@@ -13,7 +13,6 @@ def on_active_a() -> None:
             return
     active_window.set_window_pos()
     windows.append(active_window)
-    return
 
 
 def on_active_esc():

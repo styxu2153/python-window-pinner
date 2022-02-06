@@ -1,19 +1,24 @@
 import sys
-
 from pynput import keyboard
+from win import Window
 
-import win
-from decorators import toast_notify
+windows = []
 
-@toast_notify('Window pinned on top!')
 def on_active_a():
-    active = win.get_active_window()
-    win.pin_window_on_top(active)
-    
-@toast_notify('Window unpinned!')
-def on_active_s():
-    active = win.get_active_window()
-    win.unpin_window(active)
+    active_window = Window()
+    if windows:
+        for window in windows:
+            if Window.get_active_window() == window.window:
+                window.set_window_pos()
+                return
+        active_window.set_window_pos()
+        windows.append(active_window)
+        return
+    else:
+        #print([window.window for window in windows])
+        active_window.set_window_pos()
+        windows.append(active_window)
+        return
 
 
 def on_active_esc():
@@ -23,7 +28,6 @@ def on_active_esc():
 def main():
     with keyboard.GlobalHotKeys({
             '<ctrl>+<alt>+a': on_active_a,
-            '<ctrl>+<alt>+s': on_active_s,
             '<ctrl>+<alt>+q': on_active_esc}) as h:
         h.join()
         

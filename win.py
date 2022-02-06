@@ -2,9 +2,6 @@ import win32gui
 import win32con
 from decorators import toast_notify
 
-# def get_active_window():
-#     return win32gui.GetForegroundWindow()
-
 
 def get_active_window_size(hwnd) -> list:
     rect = win32gui.GetWindowRect(hwnd)
@@ -33,6 +30,7 @@ class Window:
                 win32gui.SetWindowPos(self.window, win32con.HWND_NOTOPMOST, *self.rect, 0)
                 self.on_top = False
         _set_window_pos()
+
 
     @staticmethod
     def get_active_window():

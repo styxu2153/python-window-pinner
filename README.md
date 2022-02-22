@@ -6,7 +6,7 @@ Simple program for pinning windows on top of screen. System: Windows 10
 * Download repo to your machine
 * Use CMD in project's directory
 * Install required packages in venv or global with command: pip install -r requirements.txt
-* run program with double click on window_pinner.pyw
+* run program with double click on windows_pinner.pyw
 
 ## Use
 * Ctrl + alt + a will pin/unpin focused window
